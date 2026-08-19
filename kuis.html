@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kuis Tata Surya</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 15% 20%, #312e81, transparent 28%),
+                radial-gradient(circle at 85% 70%, #164e63, transparent 30%),
+                linear-gradient(135deg, #020617, #111827);
+
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .judul {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .judul h1 {
+            font-size: 45px;
+            margin: 10px 0;
+            text-shadow: 0 0 25px rgba(255,255,255,0.4);
+        }
+
+        .judul p {
+            font-size: 18px;
+        }
+
+        .kartu {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 25px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        .nomor {
+            color: #facc15;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .pertanyaan {
+            font-size: 23px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .pilihan {
+            display: grid;
+            gap: 12px;
+        }
+
+        .pilihan button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            text-align: left;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .pilihan button:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateX(5px);
+        }
+
+        .pilihan button.benar {
+            background: rgba(34,197,94,0.35);
+            border-color: #22c55e;
+        }
+
+        .pilihan button.salah {
+            background: rgba(239,68,68,0.35);
+            border-color: #ef4444;
+        }
+
+        .feedback {
+            min-height: 30px;
+            margin-top: 20px;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .lanjut {
+            display: block;
+            margin: 20px auto 0;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #facc15;
+            color: #111827;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hasil {
+            display: none;
+            text-align: center;
+        }
+
+        .trofi {
+            font-size: 80px;
+        }
+
+        .nilai {
+            font-size: 60px;
+            font-weight: bold;
+            color: #facc15;
+            margin: 15px;
+        }
+
+        .pesan {
+            font-size: 18px;
+            line-height: 1.7;
+            background: rgba(255,255,255,0.08);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .ulang,
+        .menu {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 14px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .ulang {
+            background: #facc15;
+            color: #111827;
+        }
+
+        .menu {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="judul">
+        <h1>🚀 Kuis Tata Surya</h1>
+        <p>Yuk uji pengetahuanmu tentang Tata Surya!</p>
+    </div>
+
+
+    <!-- BAGIAN SOAL -->
+
+    <div class="kartu" id="areaKuis">
+
+        <div class="nomor" id="nomorSoal"></div>
+
+        <div class="pertanyaan" id="pertanyaan"></div>
+
+        <div class="pilihan" id="pilihan"></div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <button
+            class="lanjut"
+            id="tombolLanjut"
+            style="display:none;"
+            onclick="soalBerikutnya()">
+
+            Soal Berikutnya ➜
+
+        </button>
+
+    </div>
+
+
+    <!-- HASIL KUIS -->
+
+    <div class="kartu hasil" id="hasil">
+
+        <div class="trofi">
+            🏆
+        </div>
+
+        <h1>🎉 Kuis Selesai!</h1>
+
+        <p>Skor kamu:</p>
+
+        <div class="nilai" id="nilai"></div>
+
+        <h2 id="predikat"></h2>
+
+        <div class="pesan" id="pesan"></div>
+
+        <br>
+
+        <button
+            class="ulang"
+            onclick="mulaiKuis()">
+
+            🔄 Coba Lagi
+
+        </button>
+
+        <a
+            href="menu.html"
+            class="menu">
+
+            🏠 Menu Utama
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const soal = [
+
+    {
+        pertanyaan:
+        "Planet yang dikenal sebagai Planet Merah adalah ...",
+
+        pilihan: [
+            "A. Venus",
+            "B. Mars",
+            "C. Jupiter",
+            "D. Saturnus"
+        ],
+
+        jawaban: 1
+    },
+
+    {
+        pertanyaan:
+        "Planet terbesar dalam Tata Surya adalah ...",
+
+        pilihan: [
+            "A. Bumi",
+            "B. Saturnus",
+            "C. Jupiter",
+            "D. Neptunus"
+        ],
+
+        jawaban: 2
+    },
+
+    {
+        pertanyaan:
+        "Gerakan Bumi mengelilingi Matahari disebut ...",
+
+        pilihan: [
+            "A. Rotasi",
+            "B. Revolusi",
+            "C. Gravitasi",
+            "D. Orbit"
+        ],
+
+        jawaban: 1
+    },
+
+    {
+        pertanyaan:
+        "Mengapa planet yang lebih jauh dari Matahari umumnya membutuhkan waktu lebih lama untuk melakukan satu kali revolusi?",
+
+        pilihan: [
+            "A. Karena lintasan orbitnya lebih panjang",
+            "B. Karena planet tersebut tidak memiliki gravitasi",
+            "C. Karena Matahari berhenti bergerak",
+            "D. Karena planet tersebut tidak berotasi"
+        ],
+
+        jawaban: 0
+    },
+
+    {
+        pertanyaan:
+        "Planet yang paling jauh dari Matahari adalah ...",
+
+        pilihan: [
+            "A. Uranus",
+            "B. Saturnus",
+            "C. Jupiter",
+            "D. Neptunus"
+        ],
+
+        jawaban: 3
+    },
+
+    {
+        pertanyaan:
+        "Planet yang memiliki cincin paling mudah dikenali adalah ...",
+
+        pilihan: [
+            "A. Mars",
+            "B. Saturnus",
+            "C. Venus",
+            "D. Merkurius"
+        ],
+
+        jawaban: 1
+    },
+
+    {
+        pertanyaan:
+        "Planet tempat manusia tinggal adalah ...",
+
+        pilihan: [
+            "A. Mars",
+            "B. Venus",
+            "C. Bumi",
+            "D. Jupiter"
+        ],
+
+        jawaban: 2
+    },
+
+    {
+        pertanyaan:
+        "Urutan planet yang benar mulai dari yang paling dekat dengan Matahari adalah ...",
+
+        pilihan: [
+            "A. Merkurius - Venus - Bumi - Mars",
+            "B. Venus - Merkurius - Bumi - Mars",
+            "C. Bumi - Venus - Merkurius - Mars",
+            "D. Mars - Bumi - Venus - Merkurius"
+        ],
+
+        jawaban: 0
+    },
+
+    {
+        pertanyaan:
+        "Jika Bumi tidak berotasi tetapi tetap berevolusi mengelilingi Matahari, apa yang paling mungkin berubah?",
+
+        pilihan: [
+            "A. Terjadinya siang dan malam",
+            "B. Jumlah planet",
+            "C. Matahari menjadi planet",
+            "D. Bulan menjadi Matahari"
+        ],
+
+        jawaban: 0
+    },
+
+    {
+        pertanyaan:
+        "Jika Bumi berada jauh lebih dekat dengan Matahari, kemungkinan yang paling masuk akal adalah ...",
+
+        pilihan: [
+            "A. Bumi menerima lebih banyak energi Matahari",
+            "B. Bumi menerima lebih sedikit energi Matahari",
+            "C. Matahari berhenti bersinar",
+            "D. Bumi tidak mengalami rotasi"
+        ],
+
+        jawaban: 0
+    }
+
+];
+
+
+let nomor = 0;
+let skor = 0;
+let sudahMenjawab = false;
+
+
+function tampilkanSoal() {
+
+    sudahMenjawab = false;
+
+    document.getElementById("feedback").innerHTML = "";
+
+    document.getElementById("tombolLanjut")
+        .style.display = "none";
+
+    const data = soal[nomor];
+
+    document.getElementById("nomorSoal").innerHTML =
+        "Soal " + (nomor + 1) +
+        " dari " + soal.length;
+
+    document.getElementById("pertanyaan").innerHTML =
+        data.pertanyaan;
+
+    const pilihan =
+        document.getElementById("pilihan");
+
+    pilihan.innerHTML = "";
+
+
+    data.pilihan.forEach(function(teks, index) {
+
+        const tombol =
+            document.createElement("button");
+
+        tombol.innerHTML = teks;
+
+        tombol.onclick = function() {
+            cekJawaban(index);
+        };
+
+        pilihan.appendChild(tombol);
+
+    });
+
+}
+
+
+function cekJawaban(pilihan) {
+
+    if (sudahMenjawab) return;
+
+    sudahMenjawab = true;
+
+    const data = soal[nomor];
+
+    const tombol =
+        document.querySelectorAll("#pilihan button");
+
+
+    tombol.forEach(function(btn, index) {
+
+        btn.disabled = true;
+
+        if (index === data.jawaban) {
+            btn.classList.add("benar");
+        }
+
+    });
+
+
+    if (pilihan === data.jawaban) {
+
+        skor += 10;
+
+        document.getElementById("feedback").innerHTML =
+            "✅ Benar! Hebat!";
+
+    } else {
+
+        tombol[pilihan].classList.add("salah");
+
+        document.getElementById("feedback").innerHTML =
+            "❌ Belum tepat. Jawaban yang benar adalah " +
+            data.pilihan[data.jawaban];
+
+    }
+
+
+    document.getElementById("tombolLanjut")
+        .style.display = "block";
+
+}
+
+
+function soalBerikutnya() {
+
+    nomor++;
+
+    if (nomor < soal.length) {
+
+        tampilkanSoal();
+
+    } else {
+
+        tampilkanHasil();
+
+    }
+
+}
+
+
+function tampilkanHasil() {
+
+    document.getElementById("areaKuis")
+        .style.display = "none";
+
+    document.getElementById("hasil")
+        .style.display = "block";
+
+    document.getElementById("nilai").innerHTML =
+        skor + " / 100";
+
+
+    let predikat;
+    let pesan;
+
+
+    if (skor >= 90) {
+
+        predikat = "🏆 SANGAT BAIK!";
+
+        pesan =
+            "Luar biasa! Kamu sudah sangat memahami Tata Surya.";
+
+    }
+
+    else if (skor >= 70) {
+
+        predikat = "🌟 BAIK!";
+
+        pesan =
+            "Bagus! Pemahamanmu tentang Tata Surya sudah cukup baik.";
+
+    }
+
+    else {
+
+        predikat = "🚀 TETAP SEMANGAT!";
+
+        pesan =
+            "Yuk pelajari kembali materi Tata Surya dan coba lagi.";
+
+    }
+
+
+    document.getElementById("predikat")
+        .innerHTML = predikat;
+
+    document.getElementById("pesan")
+        .innerHTML = pesan;
+
+}
+
+
+function mulaiKuis() {
+
+    nomor = 0;
+
+    skor = 0;
+
+    document.getElementById("hasil")
+        .style.display = "none";
+
+    document.getElementById("areaKuis")
+        .style.display = "block";
+
+    tampilkanSoal();
+
+}
+
+
+mulaiKuis();
+
+</script>
+
+</body>
+
+</html>

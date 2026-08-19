@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bumi dan Bulan</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 15% 20%, #1e3a8a, transparent 30%),
+                radial-gradient(circle at 85% 75%, #312e81, transparent 30%),
+                linear-gradient(135deg, #020617, #0f172a);
+
+            padding: 30px 15px;
+        }
+
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .ikon {
+            font-size: 75px;
+
+            animation:
+                melayang 3s ease-in-out infinite;
+        }
+
+
+        .header h1 {
+            font-size: clamp(38px, 6vw, 58px);
+
+            margin: 10px 0;
+
+            color: #bfdbfe;
+
+            text-shadow:
+                0 0 25px #60a5fa;
+        }
+
+
+        .header p {
+            font-size: 19px;
+
+            opacity: 0.9;
+        }
+
+
+        /* ANIMASI */
+
+        .angkasa {
+
+            position: relative;
+
+            height: 430px;
+
+            overflow: hidden;
+
+            border-radius: 30px;
+
+            margin-bottom: 25px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(30,64,175,0.25),
+                    rgba(2,6,23,0.95) 70%
+                );
+        }
+
+
+        .bumi-area {
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 300px;
+            height: 300px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border:
+                2px dashed rgba(255,255,255,0.2);
+
+            border-radius: 50%;
+        }
+
+
+        .bumi {
+
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+
+            width: 125px;
+            height: 125px;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    #60a5fa,
+                    #2563eb 40%,
+                    #166534 45%,
+                    #15803d 65%,
+                    #1e3a8a 80%
+                );
+
+            box-shadow:
+                0 0 25px #60a5fa,
+                0 0 55px rgba(59,130,246,0.5);
+
+            animation:
+                rotasi 5s linear infinite;
+        }
+
+
+        .bulan-orbit {
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            animation:
+                orbit 7s linear infinite;
+        }
+
+
+        .bulan {
+
+            position: absolute;
+
+            width: 42px;
+            height: 42px;
+
+            left: 50%;
+            top: -21px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    #ffffff,
+                    #d1d5db 55%,
+                    #6b7280
+                );
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,0.7);
+        }
+
+
+        @keyframes orbit {
+
+            from {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes rotasi {
+
+            from {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes melayang {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        .keterangan {
+
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding: 10px 20px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(0,0,0,0.55);
+
+            font-weight: bold;
+
+            z-index: 10;
+
+            text-align: center;
+
+            white-space: nowrap;
+        }
+
+
+        /* KARTU */
+
+        .card {
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.3);
+        }
+
+
+        .card h2 {
+
+            color: #93c5fd;
+
+            font-size: 30px;
+
+            margin-top: 0;
+        }
+
+
+        .card p {
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+        /* GRID */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .box {
+
+            background:
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+        }
+
+
+        .box h3 {
+
+            color: #bfdbfe;
+
+            font-size: 23px;
+
+            margin-top: 0;
+        }
+
+
+        .box ul {
+
+            font-size: 17px;
+
+            line-height: 1.9;
+        }
+
+
+        /* FASE BULAN */
+
+        .fase {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+
+        .fase-item {
+
+            text-align: center;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            padding: 20px 10px;
+
+            border-radius: 18px;
+        }
+
+
+        .fase-bulan {
+
+            font-size: 48px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .fase-item h3 {
+
+            font-size: 17px;
+
+            color: #bfdbfe;
+        }
+
+
+        /* TANTANGAN */
+
+        .tantangan {
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(30,64,175,0.35),
+                    rgba(49,46,129,0.3)
+                );
+        }
+
+
+        .pertanyaan {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            line-height: 1.6;
+        }
+
+
+        /* TOMBOL */
+
+        .tombol {
+
+            display: inline-block;
+
+            margin: 10px 5px;
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background: #60a5fa;
+
+            color: #07111f;
+
+            transition: 0.3s;
+        }
+
+
+        .tombol:hover {
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        .gelap {
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+        }
+
+
+        /* HP */
+
+        @media (max-width: 700px) {
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fase {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .angkasa {
+                height: 350px;
+            }
+
+            .bumi-area,
+            .bulan-orbit {
+                width: 240px;
+                height: 240px;
+            }
+
+            .bumi {
+                width: 100px;
+                height: 100px;
+            }
+
+            .keterangan {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="ikon">
+            🌍🌙
+        </div>
+
+        <h1>
+            Bumi dan Bulan
+        </h1>
+
+        <p>
+            Mengenal hubungan Bumi dengan satelit alaminya
+        </p>
+
+    </div>
+
+
+    <!-- ANIMASI -->
+
+    <div class="card">
+
+        <h2>
+            🌍 Lihat Gerakan Bumi dan Bulan
+        </h2>
+
+        <p>
+
+            Perhatikan animasi berikut.
+
+            <b>Bulan bergerak mengelilingi Bumi</b>,
+            sedangkan Bumi juga berputar pada porosnya.
+
+        </p>
+
+
+        <div class="angkasa">
+
+            <div class="bumi-area"></div>
+
+            <div class="bulan-orbit">
+
+                <div class="bulan"></div>
+
+            </div>
+
+            <div class="bumi"></div>
+
+
+            <div class="keterangan">
+
+                🌙 Bulan mengelilingi 🌍 Bumi
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BUMI -->
+
+    <div class="card">
+
+        <h2>
+            🌍 Apa itu Bumi?
+        </h2>
+
+        <p>
+
+            Bumi adalah salah satu planet dalam
+            Tata Surya dan merupakan tempat
+            tinggal manusia, hewan, dan tumbuhan.
+
+        </p>
+
+        <p>
+
+            Bumi memiliki atmosfer dan air yang
+            sangat penting untuk mendukung
+            kehidupan.
+
+        </p>
+
+    </div>
+
+
+    <!-- BULAN -->
+
+    <div class="card">
+
+        <h2>
+            🌙 Apa itu Bulan?
+        </h2>
+
+        <p>
+
+            Bulan adalah <b>satelit alami Bumi</b>.
+            Bulan tidak menghasilkan cahaya sendiri.
+
+        </p>
+
+        <p>
+
+            Cahaya Bulan yang kita lihat sebenarnya
+            merupakan <b>pantulan cahaya Matahari</b>.
+
+        </p>
+
+    </div>
+
+
+    <!-- GERAKAN -->
+
+    <div class="card">
+
+        <h2>
+            🔄 Gerakan Bulan
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="box">
+
+                <h3>
+                    🌍 Mengelilingi Bumi
+                </h3>
+
+                <p>
+
+                    Bulan melakukan revolusi
+                    mengelilingi Bumi.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    ☀️ Mengelilingi Matahari
+                </h3>
+
+                <p>
+
+                    Bersama Bumi, Bulan juga
+                    bergerak mengelilingi Matahari.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    🔄 Berputar pada Poros
+                </h3>
+
+                <p>
+
+                    Bulan juga melakukan rotasi
+                    pada porosnya.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    🌊 Pasang Surut
+                </h3>
+
+                <p>
+
+                    Gaya gravitasi Bulan merupakan
+                    salah satu faktor utama yang
+                    memengaruhi pasang surut air laut.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- FASE BULAN -->
+
+    <div class="card">
+
+        <h2>
+            🌙 Mengenal Fase Bulan
+        </h2>
+
+        <p>
+
+            Bentuk Bulan yang terlihat dari Bumi
+            tampak berubah-ubah karena posisi
+            Bulan terhadap Bumi dan Matahari
+            berubah.
+
+        </p>
+
+
+        <div class="fase">
+
+
+            <div class="fase-item">
+
+                <div class="fase-bulan">
+                    🌑
+                </div>
+
+                <h3>
+                    Bulan Baru
+                </h3>
+
+            </div>
+
+
+            <div class="fase-item">
+
+                <div class="fase-bulan">
+                    🌓
+                </div>
+
+                <h3>
+                    Perbani Awal
+                </h3>
+
+            </div>
+
+
+            <div class="fase-item">
+
+                <div class="fase-bulan">
+                    🌕
+                </div>
+
+                <h3>
+                    Bulan Purnama
+                </h3>
+
+            </div>
+
+
+            <div class="fase-item">
+
+                <div class="fase-bulan">
+                    🌗
+                </div>
+
+                <h3>
+                    Perbani Akhir
+                </h3>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- TANTANGAN -->
+
+    <div class="card tantangan">
+
+        <h2>
+            🧠 Ayo Berpikir!
+        </h2>
+
+        <div class="pertanyaan">
+
+            Mengapa Bulan terlihat bercahaya
+            pada malam hari, padahal Bulan
+            tidak menghasilkan cahaya sendiri?
+
+        </div>
+
+
+        <a
+            href="kuis.html"
+            class="tombol">
+
+            🚀 Uji Pemahaman
+
+        </a>
+
+
+        <a
+            href="materi.html"
+            class="tombol gelap">
+
+            📚 Kembali ke Materi
+
+        </a>
+
+    </div>
+
+
+    <div style="text-align:center; margin:30px;">
+
+        <a
+            href="menu.html"
+            class="tombol gelap">
+
+            🏠 Menu Utama
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Jelajah Tata Surya</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at 20% 20%, #3b2b72 0%, transparent 25%),
+                radial-gradient(circle at 80% 30%, #172554 0%, transparent 30%),
+                linear-gradient(135deg, #050816, #111b3a, #050816);
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        /* Bintang */
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: kedip 2s infinite alternate;
+        }
+
+        .star:nth-child(1) {
+            top: 15%;
+            left: 12%;
+        }
+
+        .star:nth-child(2) {
+            top: 30%;
+            left: 85%;
+            animation-delay: 0.5s;
+        }
+
+        .star:nth-child(3) {
+            top: 70%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(4) {
+            top: 80%;
+            left: 80%;
+            animation-delay: 1.5s;
+        }
+
+        .star:nth-child(5) {
+            top: 10%;
+            left: 60%;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes kedip {
+            from {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.3);
+            }
+        }
+
+        /* Planet dekorasi */
+
+        .planet {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .planet-1 {
+            width: 120px;
+            height: 120px;
+            background: #f97316;
+            left: -35px;
+            top: 15%;
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.5);
+        }
+
+        .planet-2 {
+            width: 170px;
+            height: 170px;
+            background: #38bdf8;
+            right: -60px;
+            bottom: 10%;
+            box-shadow: 0 0 50px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Kotak utama */
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+
+            text-align: center;
+
+            padding: 55px 30px;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .emoji {
+            font-size: 75px;
+            margin-bottom: 15px;
+
+            animation: melayang 3s ease-in-out infinite;
+        }
+
+        @keyframes melayang {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        h1 {
+            font-size: clamp(38px, 7vw, 70px);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 3vw, 26px);
+            margin-bottom: 12px;
+        }
+
+        .description {
+            font-size: 17px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: auto;
+            opacity: 0.9;
+        }
+
+        /* Tombol */
+
+        .start-button {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 16px 38px;
+
+            border-radius: 50px;
+
+            background: #facc15;
+
+            color: #172554;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            box-shadow: 0 8px 25px rgba(250, 204, 21, 0.35);
+
+            transition: 0.3s;
+        }
+
+        .start-button:hover {
+            transform: translateY(-5px) scale(1.04);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="stars">
+
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+    </div>
+
+    <div class="planet planet-1"></div>
+    <div class="planet planet-2"></div>
+
+    <main class="container">
+
+        <div class="emoji">
+            🚀
+        </div>
+
+        <h1>
+            JELAJAH TATA SURYA
+        </h1>
+
+        <div class="subtitle">
+            🌎 Petualangan Seru Mengenal Alam Semesta
+        </div>
+
+        <p class="description">
+            Yuk, kenali Matahari dan delapan planet
+            dalam Tata Surya melalui pembelajaran
+            yang menyenangkan dan interaktif!
+        </p>
+
+        <a href="menu.html" class="start-button">
+            🚀 MULAI BELAJAR
+        </a>
+
+        <div class="footer">
+            Media Pembelajaran Interaktif • Sekolah Dasar
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Planet-Planet Tata Surya</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 15% 20%, #312e81, transparent 30%),
+                radial-gradient(circle at 85% 75%, #164e63, transparent 30%),
+                linear-gradient(135deg, #020617, #111827);
+
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .ikon {
+            font-size: 75px;
+            animation: melayang 3s ease-in-out infinite;
+        }
+
+        .header h1 {
+            font-size: clamp(38px, 6vw, 58px);
+            margin: 10px 0;
+            color: #c4b5fd;
+
+            text-shadow:
+                0 0 25px #8b5cf6;
+        }
+
+        .header p {
+            font-size: 19px;
+            opacity: 0.9;
+        }
+
+        .info {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 30px;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .info h2 {
+            color: #facc15;
+            margin-top: 0;
+        }
+
+        .info p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .planet-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .planet {
+            position: relative;
+            overflow: hidden;
+
+            min-height: 260px;
+
+            padding: 25px 20px;
+
+            border-radius: 25px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.3);
+
+            transition:
+                transform 0.3s,
+                background 0.3s;
+        }
+
+        .planet:hover {
+            transform: translateY(-10px) scale(1.02);
+
+            background:
+                rgba(255,255,255,0.16);
+        }
+
+        .planet-icon {
+            font-size: 75px;
+
+            margin-bottom: 10px;
+
+            filter:
+                drop-shadow(0 0 12px rgba(255,255,255,0.35));
+        }
+
+        .planet h2 {
+            margin: 5px 0 10px;
+
+            font-size: 23px;
+
+            color: #e9d5ff;
+        }
+
+        .planet p {
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            opacity: 0.85;
+        }
+
+        .urutan {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #facc15;
+            color: #111827;
+
+            font-weight: bold;
+        }
+
+        .tombol {
+            display: inline-block;
+
+            margin: 10px 5px;
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background: #a78bfa;
+
+            color: #111827;
+
+            transition: 0.3s;
+        }
+
+        .tombol:hover {
+            transform: translateY(-3px);
+        }
+
+        .gelap {
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+        }
+
+        .kembali {
+            text-align: center;
+
+            margin: 40px 0 20px;
+        }
+
+        @keyframes melayang {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+        @media (max-width: 900px) {
+
+            .planet-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .planet-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="header">
+
+        <div class="ikon">
+            🪐✨
+        </div>
+
+        <h1>
+            Planet-Planet Tata Surya
+        </h1>
+
+        <p>
+            Yuk kenali delapan planet yang mengelilingi Matahari!
+        </p>
+
+    </div>
+
+
+    <div class="info">
+
+        <h2>
+            ☀️ Apa itu Planet?
+        </h2>
+
+        <p>
+            Planet adalah benda langit yang mengelilingi
+            Matahari pada lintasannya masing-masing.
+            Dalam Tata Surya terdapat <b>delapan planet</b>.
+        </p>
+
+        <p>
+            Urutan planet dimulai dari yang paling dekat
+            dengan Matahari hingga yang paling jauh.
+            Yuk kenali satu per satu!
+        </p>
+
+    </div>
+
+
+    <div class="planet-grid">
+
+
+        <!-- MERKURIUS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">1</span>
+
+            <div class="planet-icon">
+                ☿️
+            </div>
+
+            <h2>Merkurius</h2>
+
+            <p>
+                Planet terdekat dengan Matahari
+                dan merupakan planet terkecil
+                dalam Tata Surya.
+            </p>
+
+        </a>
+
+
+        <!-- VENUS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">2</span>
+
+            <div class="planet-icon">
+                🟠
+            </div>
+
+            <h2>Venus</h2>
+
+            <p>
+                Planet kedua dari Matahari
+                dan memiliki atmosfer yang
+                sangat tebal.
+            </p>
+
+        </a>
+
+
+        <!-- BUMI -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">3</span>
+
+            <div class="planet-icon">
+                🌍
+            </div>
+
+            <h2>Bumi</h2>
+
+            <p>
+                Planet tempat kita hidup,
+                memiliki air dalam jumlah besar
+                dan mendukung kehidupan.
+            </p>
+
+        </a>
+
+
+        <!-- MARS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">4</span>
+
+            <div class="planet-icon">
+                🔴
+            </div>
+
+            <h2>Mars</h2>
+
+            <p>
+                Sering disebut Planet Merah
+                karena permukaannya banyak
+                mengandung mineral besi.
+            </p>
+
+        </a>
+
+
+        <!-- JUPITER -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">5</span>
+
+            <div class="planet-icon">
+                🟤
+            </div>
+
+            <h2>Jupiter</h2>
+
+            <p>
+                Planet terbesar dalam Tata Surya
+                dan merupakan planet gas raksasa.
+            </p>
+
+        </a>
+
+
+        <!-- SATURNUS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">6</span>
+
+            <div class="planet-icon">
+                🪐
+            </div>
+
+            <h2>Saturnus</h2>
+
+            <p>
+                Planet yang terkenal dengan
+                sistem cincinnya yang indah.
+            </p>
+
+        </a>
+
+
+        <!-- URANUS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">7</span>
+
+            <div class="planet-icon">
+                🔵
+            </div>
+
+            <h2>Uranus</h2>
+
+            <p>
+                Planet raksasa es yang memiliki
+                kemiringan sumbu rotasi yang
+                sangat besar.
+            </p>
+
+        </a>
+
+
+        <!-- NEPTUNUS -->
+
+        <a href="#" class="planet">
+
+            <span class="urutan">8</span>
+
+            <div class="planet-icon">
+                🔵
+            </div>
+
+            <h2>Neptunus</h2>
+
+            <p>
+                Planet terjauh dari Matahari
+                dan dikenal sebagai planet
+                yang sangat dingin.
+            </p>
+
+        </a>
+
+
+    </div>
+
+
+    <div class="kembali">
+
+        <a
+            href="materi.html"
+            class="tombol">
+
+            📚 Kembali ke Materi
+
+        </a>
+
+
+        <a
+            href="menu.html"
+            class="tombol gelap">
+
+            🏠 Menu Utama
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

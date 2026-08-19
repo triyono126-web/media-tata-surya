@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Matahari - Tata Surya</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #7c2d12, transparent 30%),
+                radial-gradient(circle at 80% 70%, #713f12, transparent 30%),
+                linear-gradient(135deg, #1c0a00, #451a03);
+
+            padding: 30px 15px;
+        }
+
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .header .ikon {
+            font-size: 80px;
+
+            animation:
+                melayang 3s ease-in-out infinite;
+        }
+
+
+        .header h1 {
+            font-size: clamp(38px, 6vw, 58px);
+
+            margin: 10px 0;
+
+            color: #fde68a;
+
+            text-shadow:
+                0 0 25px #f59e0b;
+        }
+
+
+        .header p {
+            font-size: 19px;
+
+            opacity: 0.9;
+        }
+
+
+        /* MATAHARI */
+
+        .matahari-area {
+
+            height: 400px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(circle,
+                    rgba(251,191,36,0.18),
+                    rgba(0,0,0,0.5) 65%);
+
+            margin-bottom: 25px;
+        }
+
+
+        .matahari {
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border-radius: 50%;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle at 35% 35%,
+                    #fff7ae,
+                    #fde047 30%,
+                    #f59e0b 65%,
+                    #ea580c
+                );
+
+            box-shadow:
+                0 0 30px #fde047,
+                0 0 70px #f59e0b,
+                0 0 130px rgba(249,115,22,0.7);
+
+            animation:
+                berdenyut 2.5s ease-in-out infinite;
+        }
+
+
+        .sinar {
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            border:
+                8px dotted rgba(253,224,71,0.5);
+
+            animation:
+                putar 12s linear infinite;
+        }
+
+
+        @keyframes berdenyut {
+
+            0%, 100% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.08);
+            }
+
+        }
+
+
+        @keyframes putar {
+
+            from {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    translate(-50%, -50%)
+                    rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes melayang {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        /* KARTU */
+
+        .card {
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.3);
+        }
+
+
+        .card h2 {
+
+            color: #fde68a;
+
+            font-size: 30px;
+
+            margin-top: 0;
+        }
+
+
+        .card p {
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+        /* GRID */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .box {
+
+            background:
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+        }
+
+
+        .box h3 {
+
+            color: #fcd34d;
+
+            font-size: 23px;
+
+            margin-top: 0;
+        }
+
+
+        .box ul {
+
+            font-size: 17px;
+
+            line-height: 1.9;
+
+        }
+
+
+        /* TANTANGAN */
+
+        .tantangan {
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(180,83,9,0.35),
+                    rgba(234,88,12,0.2)
+                );
+        }
+
+
+        .tantangan h2 {
+
+            color: #facc15;
+        }
+
+
+        .pertanyaan {
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            line-height: 1.6;
+        }
+
+
+        /* TOMBOL */
+
+        .tombol {
+
+            display: inline-block;
+
+            margin: 10px 5px;
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background: #facc15;
+
+            color: #111827;
+
+            transition: 0.3s;
+        }
+
+
+        .tombol:hover {
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        .tombol-gelap {
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+        }
+
+
+        /* HP */
+
+        @media (max-width: 700px) {
+
+            .grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .matahari-area {
+
+                height: 330px;
+
+            }
+
+            .matahari {
+
+                width: 140px;
+
+                height: 140px;
+
+            }
+
+            .sinar {
+
+                width: 220px;
+
+                height: 220px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="ikon">
+            ☀️
+        </div>
+
+        <h1>
+            Matahari
+        </h1>
+
+        <p>
+            Bintang pusat Tata Surya dan sumber energi bagi kehidupan di Bumi
+        </p>
+
+    </div>
+
+
+    <!-- ANIMASI -->
+
+    <div class="matahari-area">
+
+        <div class="sinar"></div>
+
+        <div class="matahari"></div>
+
+    </div>
+
+
+    <!-- PENGENALAN -->
+
+    <div class="card">
+
+        <h2>
+            ☀️ Apa itu Matahari?
+        </h2>
+
+        <p>
+
+            Matahari adalah sebuah <b>bintang</b>
+            yang berada di pusat Tata Surya.
+
+            Matahari merupakan benda langit yang
+            menghasilkan cahaya dan panas sendiri.
+
+        </p>
+
+        <p>
+
+            Energi dari Matahari sangat penting
+            bagi kehidupan di Bumi.
+
+            Cahaya Matahari membantu tumbuhan
+            melakukan fotosintesis dan memberikan
+            energi panas bagi lingkungan.
+
+        </p>
+
+    </div>
+
+
+    <!-- KARAKTERISTIK -->
+
+    <div class="card">
+
+        <h2>
+            🔥 Mengenal Matahari
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="box">
+
+                <h3>
+                    ⭐ Matahari adalah Bintang
+                </h3>
+
+                <p>
+
+                    Matahari termasuk bintang karena
+                    dapat menghasilkan cahaya dan
+                    energi sendiri.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    🌡️ Sangat Panas
+                </h3>
+
+                <p>
+
+                    Matahari memiliki suhu yang
+                    sangat tinggi sehingga
+                    menghasilkan energi dalam jumlah
+                    besar.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    🌍 Pusat Tata Surya
+                </h3>
+
+                <p>
+
+                    Planet-planet dalam Tata Surya
+                    bergerak mengelilingi Matahari
+                    karena pengaruh gravitasi.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>
+                    💡 Sumber Energi
+                </h3>
+
+                <p>
+
+                    Energi Matahari sangat penting
+                    bagi kehidupan, termasuk untuk
+                    proses fotosintesis tumbuhan.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- MANFAAT -->
+
+    <div class="card">
+
+        <h2>
+            🌱 Mengapa Matahari Penting?
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="box">
+
+                <h3>🌿 Bagi Tumbuhan</h3>
+
+                <p>
+
+                    Cahaya Matahari digunakan
+                    tumbuhan untuk melakukan
+                    fotosintesis.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>🌍 Bagi Bumi</h3>
+
+                <p>
+
+                    Energi Matahari membantu
+                    menjaga suhu lingkungan
+                    dan menyediakan energi
+                    bagi berbagai proses alam.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>☀️ Cahaya</h3>
+
+                <p>
+
+                    Matahari merupakan sumber
+                    cahaya alami utama bagi
+                    Bumi pada siang hari.
+
+                </p>
+
+            </div>
+
+
+            <div class="box">
+
+                <h3>⚡ Energi Terbarukan</h3>
+
+                <p>
+
+                    Energi Matahari dapat
+                    dimanfaatkan manusia,
+                    misalnya melalui panel surya.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- TANTANGAN -->
+
+    <div class="card tantangan">
+
+        <h2>
+            🧠 Ayo Berpikir!
+        </h2>
+
+        <div class="pertanyaan">
+
+            Mengapa kehidupan di Bumi akan
+            mengalami banyak perubahan jika
+            Matahari tidak memberikan energi?
+
+        </div>
+
+
+        <a
+            href="kuis.html"
+            class="tombol">
+
+            🚀 Uji Pemahaman
+
+        </a>
+
+
+        <a
+            href="materi.html"
+            class="tombol tombol-gelap">
+
+            📚 Kembali ke Materi
+
+        </a>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <div style="text-align:center; margin:30px;">
+
+        <a
+            href="menu.html"
+            class="tombol tombol-gelap">
+
+            🏠 Menu Utama
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

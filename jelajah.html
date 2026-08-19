@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Jelajah Planet</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #312e81, transparent 30%),
+                radial-gradient(circle at 80% 80%, #164e63, transparent 30%),
+                linear-gradient(135deg, #020617, #111827);
+
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 45px;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+
+            opacity: 0.85;
+
+            margin-bottom: 35px;
+        }
+
+        .planet-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 25px;
+        }
+
+        .planet-card {
+            text-decoration: none;
+
+            color: white;
+
+            padding: 25px 15px;
+
+            border-radius: 25px;
+
+            background: rgba(255,255,255,0.10);
+
+            border:
+                1px solid rgba(255,255,255,0.18);
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .planet-card:hover {
+            transform:
+                translateY(-10px)
+                scale(1.03);
+
+            background:
+                rgba(255,255,255,0.18);
+        }
+
+        .planet-card img {
+            width: 130px;
+            height: 130px;
+
+            object-fit: contain;
+
+            margin-bottom: 15px;
+
+            transition: 0.3s;
+        }
+
+        .planet-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .planet-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .planet-card p {
+            font-size: 14px;
+
+            opacity: 0.75;
+        }
+
+        .back {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 12px 25px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.12);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>🪐 JELAJAH PLANET</h1>
+
+        <p class="subtitle">
+            Klik planet yang ingin kamu pelajari! 🚀
+        </p>
+
+
+        <section class="planet-grid">
+
+
+            <a href="merkurius.html"
+               class="planet-card">
+
+                <img src="gambar/merkurius.jpg">
+
+                <h2>☿ Merkurius</h2>
+
+                <p>
+                    Planet terdekat dengan Matahari.
+                </p>
+
+            </a>
+
+
+            <a href="venus.html"
+               class="planet-card">
+
+                <img src="gambar/venus.jpg">
+
+                <h2>♀ Venus</h2>
+
+                <p>
+                    Planet yang sangat panas.
+                </p>
+
+            </a>
+
+
+            <a href="bumi.html"
+               class="planet-card">
+
+                <img src="gambar/bumi.jpg">
+
+                <h2>🌍 Bumi</h2>
+
+                <p>
+                    Planet tempat kita tinggal.
+                </p>
+
+            </a>
+
+
+            <a href="mars.html"
+               class="planet-card">
+
+                <img src="gambar/mars.jpg">
+
+                <h2>♂ Mars</h2>
+
+                <p>
+                    Planet Merah.
+                </p>
+
+            </a>
+
+
+            <a href="jupiter.html"
+               class="planet-card">
+
+                <img src="gambar/jupiter.jpg">
+
+                <h2>♃ Jupiter</h2>
+
+                <p>
+                    Planet terbesar.
+                </p>
+
+            </a>
+
+
+            <a href="saturnus.html"
+               class="planet-card">
+
+                <img src="gambar/saturnus.jpg">
+
+                <h2>♄ Saturnus</h2>
+
+                <p>
+                    Planet dengan cincin yang indah.
+                </p>
+
+            </a>
+
+
+            <a href="uranus.html"
+               class="planet-card">
+
+                <img src="gambar/uranus.jpg">
+
+                <h2>♅ Uranus</h2>
+
+                <p>
+                    Planet dengan kemiringan unik.
+                </p>
+
+            </a>
+
+
+            <a href="neptunus.html"
+               class="planet-card">
+
+                <img src="gambar/neptunus.jpg">
+
+                <h2>♆ Neptunus</h2>
+
+                <p>
+                    Planet terjauh dari Matahari.
+                </p>
+
+            </a>
+
+
+        </section>
+
+
+        <a href="menu.html"
+           class="back">
+
+            ⬅️ Kembali ke Menu
+
+        </a>
+
+    </main>
+
+</body>
+
+</html>

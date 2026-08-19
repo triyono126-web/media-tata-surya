@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Kuis Tata Surya</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #312e81, transparent 30%),
+                radial-gradient(circle at 80% 80%, #164e63, transparent 30%),
+                linear-gradient(135deg, #020617, #111827);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+
+        }
+
+
+        .quiz {
+
+            width: 100%;
+
+            max-width: 750px;
+
+            padding: 40px 25px;
+
+            text-align: center;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.10);
+
+            border:
+                1px solid rgba(255,255,255,0.2);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.4);
+
+        }
+
+
+        h1 {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        #nomor {
+
+            font-size: 17px;
+
+            opacity: 0.8;
+.progress-container {
+
+    width: 100%;
+
+    height: 12px;
+
+    background: rgba(255,255,255,0.15);
+
+    border-radius: 20px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+}
+
+
+#progress {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #facc15;
+
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+
+}
+        }
+
+
+        #pertanyaan {
+
+            font-size: 24px;
+
+            line-height: 1.5;
+
+            margin: 30px 0;
+
+        }
+
+
+        .pilihan {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .pilihan button {
+
+            padding: 18px;
+
+            border: none;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .pilihan button:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                rgba(255,255,255,0.22);
+
+        }
+
+
+        #pesan {
+
+            min-height: 35px;
+
+            margin-top: 25px;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        #skor {
+
+            margin-top: 15px;
+
+            font-size: 18px;
+
+        }
+
+
+        #lanjut {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 14px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #facc15;
+
+            color: #172554;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        #hasilAkhir {
+
+            display: none;
+
+        }
+
+
+        .nilai {
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            margin: 20px;
+
+        }
+
+
+        .back {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 12px 25px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.12);
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .pilihan {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="quiz">
+
+
+        <section id="areaKuis">
+
+
+            <h1>
+                🧠 KUIS TATA SURYA
+            </h1>
+
+
+            <div id="nomor"></div>
+            <div class="progress-container">
+
+    <div id="progress"></div>
+
+</div>
+
+
+            <div id="pertanyaan"></div>
+
+
+            <div class="pilihan">
+
+                <button onclick="jawab(0)"
+                        id="pilihan0"></button>
+
+                <button onclick="jawab(1)"
+                        id="pilihan1"></button>
+
+                <button onclick="jawab(2)"
+                        id="pilihan2"></button>
+
+                <button onclick="jawab(3)"
+                        id="pilihan3"></button>
+
+            </div>
+
+
+            <div id="pesan"></div>
+
+
+            <div id="skor">
+                Skor: 0
+            </div>
+
+
+            <button id="lanjut"
+                    onclick="soalBerikutnya()">
+
+                ➡️ Soal Berikutnya
+
+            </button>
+
+
+        </section>
+
+
+        <section id="hasilAkhir">
+
+
+            <h1>
+                🎉 KUIS SELESAI!
+            </h1>
+
+
+            <p>
+                Skor kamu:
+            </p>
+
+
+            <div class="nilai"
+                 id="nilaiAkhir">
+            </div>
+
+
+            <p id="pesanAkhir"></p>
+
+
+            <a href="menu.html"
+               class="back">
+
+                ⬅️ Kembali ke Menu
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+
+        const soal = [
+
+            {
+
+                pertanyaan:
+                "Planet manakah yang dikenal sebagai Planet Merah?",
+
+                pilihan: [
+                    "🌍 Bumi",
+                    "♂ Mars",
+                    "♃ Jupiter",
+                    "♄ Saturnus"
+                ],
+
+                jawaban: 1
+
+            },
+
+
+            {
+
+                pertanyaan:
+                "Planet terbesar dalam Tata Surya adalah...",
+
+                pilihan: [
+                    "🌍 Bumi",
+                    "♃ Jupiter",
+                    "♂ Mars",
+                    "☿ Merkurius"
+                ],
+
+                jawaban: 1
+
+            },
+
+
+            {
+
+                pertanyaan:
+                "Planet yang terkenal memiliki cincin adalah...",
+
+                pilihan: [
+                    "♀ Venus",
+                    "🌍 Bumi",
+                    "♄ Saturnus",
+                    "♂ Mars"
+                ],
+
+                jawaban: 2
+
+            },
+
+
+            {
+
+                pertanyaan:
+                "Planet tempat manusia tinggal adalah...",
+
+                pilihan: [
+                    "🌍 Bumi",
+                    "♃ Jupiter",
+                    "♅ Uranus",
+                    "♆ Neptunus"
+                ],
+
+                jawaban: 0
+
+            },
+
+
+            {
+
+                pertanyaan:
+                "Planet yang paling jauh dari Matahari adalah...",
+
+                pilihan: [
+                    "♄ Saturnus",
+                    "♅ Uranus",
+                    "♆ Neptunus",
+                    "♂ Mars"
+                ],
+
+                jawaban: 2
+
+            }
+
+        ];
+
+
+        let nomorSoal = 0;
+
+        let skor = 0;
+
+
+        function tampilkanSoal() {
+
+
+            const data =
+                soal[nomorSoal];
+
+
+            document.getElementById("nomor")
+                .innerHTML =
+                "Soal " +
+                (nomorSoal + 1) +
+                " dari " +
+                soal.length;
+const persen =
+    ((nomorSoal + 1) / soal.length) * 100;
+
+document.getElementById("progress")
+    .style.width = persen + "%";
+
+            document.getElementById("pertanyaan")
+                .innerHTML =
+                data.pertanyaan;
+
+
+            for(let i = 0; i < 4; i++) {
+
+                document.getElementById(
+                    "pilihan" + i
+                ).innerHTML =
+                    data.pilihan[i];
+
+            }
+
+
+            document.getElementById("pesan")
+                .innerHTML = "";
+
+
+            document.getElementById("lanjut")
+                .style.display = "none";
+
+        }
+
+
+        function jawab(pilihan) {
+
+
+            const benar =
+                soal[nomorSoal].jawaban;
+
+
+            const tombol =
+                document.querySelectorAll(
+                    ".pilihan button"
+                );
+
+
+            tombol.forEach(
+                button => button.disabled = true
+            );
+
+
+            if(pilihan === benar) {
+
+                skor += 20;
+
+                document.getElementById("pesan")
+                    .innerHTML =
+                    "🎉 Hebat! Jawaban kamu benar!";
+
+            }
+
+            else {
+
+                document.getElementById("pesan")
+                    .innerHTML =
+                    "😊 Belum tepat. Tetap semangat!";
+
+            }
+
+
+            document.getElementById("skor")
+                .innerHTML =
+                "Skor: " + skor;
+
+
+            document.getElementById("lanjut")
+                .style.display = "inline-block";
+
+        }
+
+
+        function soalBerikutnya() {
+
+
+            nomorSoal++;
+
+
+            if(nomorSoal < soal.length) {
+
+
+                const tombol =
+                    document.querySelectorAll(
+                        ".pilihan button"
+                    );
+
+
+                tombol.forEach(
+                    button => button.disabled = false
+                );
+
+
+                tampilkanSoal();
+
+
+            }
+
+            else {
+
+                selesai();
+
+            }
+
+        }
+
+
+        function selesai() {
+
+
+            document.getElementById("areaKuis")
+                .style.display = "none";
+
+
+            document.getElementById("hasilAkhir")
+                .style.display = "block";
+
+
+            document.getElementById("nilaiAkhir")
+                .innerHTML =
+                skor + " / 100";
+
+
+            let pesan = "";
+
+
+            if(skor === 100) {
+
+                pesan =
+                    "🏆 Luar biasa! Kamu menguasai Tata Surya!";
+
+            }
+
+            else if(skor >= 60) {
+
+                pesan =
+                    "🌟 Bagus! Tinggal sedikit lagi menuju sempurna!";
+
+            }
+
+            else {
+
+                pesan =
+                    "🚀 Tetap semangat belajar! Coba lagi ya!";
+
+            }
+
+
+            document.getElementById("pesanAkhir")
+                .innerHTML = pesan;
+
+        }
+
+
+        tampilkanSoal();
+
+
+    </script>
+
+
+</body>
+
+</html>

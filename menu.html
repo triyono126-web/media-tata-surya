@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Menu - Jelajah Tata Surya</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family: Arial, sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #312e81 0%, transparent 28%),
+                radial-gradient(circle at 80% 80%, #164e63 0%, transparent 30%),
+                linear-gradient(135deg, #020617, #111827);
+
+            padding: 30px;
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            animation: kedip 2s infinite alternate;
+        }
+
+        .star:nth-child(1) {
+            top: 15%;
+            left: 10%;
+        }
+
+        .star:nth-child(2) {
+            top: 25%;
+            left: 85%;
+        }
+
+        .star:nth-child(3) {
+            top: 75%;
+            left: 15%;
+        }
+
+        .star:nth-child(4) {
+            top: 80%;
+            left: 80%;
+        }
+
+        @keyframes kedip {
+            from {
+                opacity: 0.3;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+
+            margin: auto;
+
+            text-align: center;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 55px);
+
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+
+            opacity: 0.85;
+
+            margin-bottom: 35px;
+        }
+
+        .menu {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(210px, 1fr));
+
+            gap: 22px;
+        }
+
+        .card {
+            text-decoration: none;
+
+            color: white;
+
+            padding: 30px 20px;
+
+            border-radius: 25px;
+
+            background: rgba(255,255,255,0.10);
+
+            border: 1px solid rgba(255,255,255,0.18);
+
+            backdrop-filter: blur(10px);
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+
+            background: rgba(255,255,255,0.18);
+        }
+
+        .icon {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            font-size: 22px;
+
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            opacity: 0.8;
+        }
+
+        .back {
+            display: inline-block;
+
+            margin-top: 35px;
+
+            padding: 12px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            color: white;
+
+            background: rgba(255,255,255,0.12);
+
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .back:hover {
+            background: rgba(255,255,255,0.22);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="stars">
+
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+    </div>
+
+
+    <main class="container">
+
+        <h1>🌌 JELAJAH TATA SURYA</h1>
+
+        <p class="subtitle">
+            Pilih kegiatan yang ingin kamu jelajahi 🚀
+        </p>
+
+
+        <section class="menu">
+
+
+            <a href="materi.html" class="card">
+
+                <div class="icon">
+                    📚
+                </div>
+
+                <h2>
+                    MATERI
+                </h2>
+
+                <p>
+                    Pelajari Matahari dan
+                    delapan planet Tata Surya.
+                </p>
+
+            </a>
+
+
+            <a href="jelajah.html" class="card">
+
+                <div class="icon">
+                    🔭
+                </div>
+
+                <h2>
+                    JELAJAH PLANET
+                </h2>
+
+                <p>
+                    Jelajahi planet-planet
+                    dan temukan fakta menarik.
+                </p>
+
+            </a>
+
+
+            <a href="permainan.html" class="card">
+
+                <div class="icon">
+                    🎮
+                </div>
+
+                <h2>
+                    PERMAINAN
+                </h2>
+
+                <p>
+                    Bermain sambil menguji
+                    pengetahuan tentang Tata Surya.
+                </p>
+
+            </a>
+
+
+            <a href="kuis.html" class="card">
+
+                <div class="icon">
+                    🧠
+                </div>
+
+                <h2>
+                    KUIS
+                </h2>
+
+                <p>
+                    Uji pemahamanmu dan
+                    dapatkan skor terbaik.
+                </p>
+
+            </a>
+
+
+        </section>
+
+
+        <a href="index.html" class="back">
+            ⬅️ Kembali ke Beranda
+        </a>
+
+
+    </main>
+
+</body>
+
+</html>
