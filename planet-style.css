@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 20%, #312e81, transparent 28%),
+        radial-gradient(circle at 85% 70%, #164e63, transparent 30%),
+        linear-gradient(135deg, #020617, #111827);
+
+    background-attachment: fixed;
+
+    padding: 35px 20px;
+}
+
+/* Judul planet */
+
+h1 {
+    text-align: center;
+
+    font-size: clamp(40px, 7vw, 65px);
+
+    margin: 15px 0 30px;
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,0.4);
+}
+
+/* Subjudul */
+
+h2 {
+    text-align: center;
+
+    color: #facc15;
+
+    font-size: 28px;
+
+    margin-top: 30px;
+}
+
+/* Kotak informasi */
+
+p {
+    max-width: 850px;
+
+    margin: 18px auto;
+
+    padding: 22px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    text-align: left;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.15);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* Gambar planet */
+
+img {
+    display: block;
+
+    max-width: 90%;
+
+    height: auto;
+
+    margin: 20px auto;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.5);
+
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.04);
+}
+
+/* Tombol kembali */
+
+a {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 13px 28px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    border:
+        1px solid rgba(255,255,255,0.18);
+
+    border-radius: 30px;
+
+    transition: 0.3s;
+}
+
+a:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255,255,255,0.22);
+}
